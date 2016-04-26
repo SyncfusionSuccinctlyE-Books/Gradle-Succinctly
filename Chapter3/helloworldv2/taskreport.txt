@@ -1,0 +1,18 @@
+:help
+Detailed task information for world
+
+Path
+     :world
+
+Type
+     Task (org.gradle.api.Task)
+
+Description
+     -
+
+Group
+     -
+
+BUILD SUCCESSFUL
+
+Total time: 2.863 secs

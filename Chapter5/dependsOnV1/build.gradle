@@ -1,0 +1,18 @@
+task setUpConnection {
+  println 'Setting up database connection'
+}
+
+//Declares dependency using quotes (usually optional)
+task connectToDatabase {
+  dependsOn 'setUpConnection'
+}
+
+//Declares dependency using the task name after dependsOn method
+task extractDatabase {
+ dependsOn connectToDatabase
+}
+
+//Declares dependency using the left-shift operator
+task closeConnection {
+  dependsOn << extractDatabase
+}

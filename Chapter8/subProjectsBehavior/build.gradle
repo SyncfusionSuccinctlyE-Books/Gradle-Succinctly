@@ -1,0 +1,16 @@
+allprojects {
+    task hello << {task -> println "I'm $task.project.name"}
+}
+
+subprojects.each {
+   project("$it.path").hello << {
+        println " - and I depend on subProjectsBehavior"
+    }
+    
+    if (it.path == ":webfrontend")
+    {
+        project("$it.path").hello << {
+            println " - and I manage Web User Interface, too."
+        }
+    }    
+}

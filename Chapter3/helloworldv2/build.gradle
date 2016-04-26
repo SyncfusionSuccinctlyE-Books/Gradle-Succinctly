@@ -1,0 +1,11 @@
+task helloTask << {
+  println 'Hello Task output'
+}
+
+task hello << {
+  print 'hello, '
+}
+
+task world(dependsOn: hello) << {
+  println 'world'
+}

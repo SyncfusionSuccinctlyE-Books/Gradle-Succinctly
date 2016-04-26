@@ -1,0 +1,5 @@
+ext.software = false
+
+hello.doLast {
+    println " - and I'm in charge of creating a ZIP file for the distribution package."
+}

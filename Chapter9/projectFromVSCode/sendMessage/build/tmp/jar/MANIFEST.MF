@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Specification-Title: Gradle Succinctly
+Specification-Version: 1.0
+Specification-Vendor: Syncfusion, Inc.
+Implementation-Title: hello.HelloWorld
+Implementation-Version: build02
+Implementation-Vendor: Syncfusion, Inc.
+Main-Class: hello.SendMessage
+

@@ -1,0 +1,32 @@
+/* Declaring default tasks will ensure the zip packaging after the build */
+defaultTasks 'build', 'packageDistribution'
+
+/* Execute gradle with no tasks, in order to succeed */
+
+apply plugin: 'java'
+
+/* Adding the needed attributes to the manifest file */
+jar {
+    manifest {
+        attributes 'Specification-Title'    : 'Gradle Succinctly'
+        attributes 'Specification-Version'  : '1.0'
+        attributes 'Specification-Vendor'   : 'Syncfusion, Inc.'
+        attributes 'Implementation-Title'   : 'hello.HelloWorld'
+        attributes 'Implementation-Version' : 'build02'
+        attributes 'Implementation-Vendor'  : 'Syncfusion, Inc.'
+        attributes 'Main-Class': 'hello.HelloWorld'
+    }
+}
+
+/* This task will be executed after the build task
+   and will create a zip file with the contents of
+   the build\libs directory (the jar program). 
+   
+   The zip file will be saved in the 
+   build\distributions folder, and will be named
+   distPackage-1.0.zip                              */
+task packageDistribution(type: Zip){
+    from 'build\\libs'
+    baseName = 'distPackage'
+    version = '1.0'
+}

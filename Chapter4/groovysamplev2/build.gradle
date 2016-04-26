@@ -1,0 +1,4 @@
+task count << {
+  6.times { print "$it " }
+  println ''
+}

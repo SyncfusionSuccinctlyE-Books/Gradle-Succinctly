@@ -1,0 +1,19 @@
+task extractDatabase
+ 
+extractDatabase << {
+   println 'Connect to database'
+}
+
+extractDatabase << {
+   println 'Extracting database data'
+}
+
+extractDatabase << {
+   println 'Closing database connection'
+}
+
+/* A closure added to the task name without << operator
+   is a configuration block */
+extractDatabase {
+   println 'Setting up database connection'
+}

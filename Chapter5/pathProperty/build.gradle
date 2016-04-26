@@ -1,0 +1,51 @@
+/* This is the task that will be enabled 
+   on demand. */
+task extractMetadata << {
+        println "This Task's path is ${path}"  //Displaying task's path
+        println 'Extacting metadata.'
+}
+
+task extractData << {
+    println "This Task's path is ${path}" //Displaying task's path
+    println 'Extracting database data.'
+}
+
+/* Code that will be executed before extractData task action begins, is set up at configuration phase. */
+extractData {
+    doFirst {
+    println 'Connecting to the database.'
+    }
+    doFirst {
+        println 'Setting up database connection.'
+    }
+}
+
+/* This is the main task */
+task extractDatabase (dependsOn: [extractMetadata, extractData]) << {
+    println "This Task's path is ${path}" //Displaying task's path
+    //This is the task action 
+}
+
+/* A closure is assigned to the extractDatabase task
+   at configuration phase, so the code will be executed
+   before Gradle enters to the execution phase.
+   
+   The tasks collection is used to access the extractMetadata
+   task object, in order to set the value for enabled property.
+   
+   The value for enabled property depends on the extract.metadata
+   System property. If this propety is set to true, the extractMetadata
+   task will be executed.
+*/
+extractDatabase {
+    tasks['extractMetadata'].enabled = (System.properties['extract.metadata'] == 'true')
+}
+
+/* Code that will be executed after extractDatabase action ends */
+extractDatabase << {
+    println 'Zipping extracted data to backupdata.zip'
+}
+
+extractDatabase << {
+   println 'Closing database connection.'
+}

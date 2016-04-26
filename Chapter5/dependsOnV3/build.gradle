@@ -1,0 +1,20 @@
+task setUpConnection {
+  println 'Setting up database connection'
+}
+
+task connectToDatabase
+connectToDatabase
+{
+    println 'Connecting to database'
+}
+
+//Declares multi-dependency by listing tasks in a comma separated list
+task extractDatabase {
+ dependsOn setUpConnection, connectToDatabase
+ println 'Extracting database'
+}
+
+//A shortcut for declaring dependencies (discussed in Chapter 4)
+task closeConnection(dependsOn: extractDatabase) {
+    println 'Database connection closed'
+}

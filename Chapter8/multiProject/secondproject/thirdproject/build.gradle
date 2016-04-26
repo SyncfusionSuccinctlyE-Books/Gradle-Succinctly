@@ -1,0 +1,7 @@
+task hello << {
+    println "I'm $project.name"
+}
+
+task subProjectTask << {
+    print "I am the subProjectTask of $project.name"
+}

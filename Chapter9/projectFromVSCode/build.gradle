@@ -1,0 +1,51 @@
+defaultTasks 'build', 'copyDist', 'packageDistribution'
+
+allprojects {
+    apply plugin: 'java'
+    group = 'hello'
+    version = '1.0'
+}
+
+project(':helloWorld').jar {
+    manifest {
+        attributes 'Specification-Title'    : 'Gradle Succinctly'
+        attributes 'Specification-Version'  : '1.0'
+        attributes 'Specification-Vendor'   : 'Syncfusion, Inc.'
+        attributes 'Implementation-Title'   : 'hello.HelloWorld'
+        attributes 'Implementation-Version' : 'build02'
+        attributes 'Implementation-Vendor'  : 'Syncfusion, Inc.'
+        attributes 'Main-Class': 'hello.HelloWorld'
+    }
+}
+
+project(':sendMessage').jar {
+    manifest {
+        attributes 'Specification-Title'    : 'Gradle Succinctly'
+        attributes 'Specification-Version'  : '1.0'
+        attributes 'Specification-Vendor'   : 'Syncfusion, Inc.'
+        attributes 'Implementation-Title'   : 'hello.HelloWorld'
+        attributes 'Implementation-Version' : 'build02'
+        attributes 'Implementation-Vendor'  : 'Syncfusion, Inc.'
+        attributes 'Main-Class': 'hello.SendMessage'
+    }   
+}
+
+task copyDist(type: Copy) {
+    into "$buildDir\\libs"
+    subprojects {
+        from tasks.withType(Jar)
+    }
+}
+
+/* This task will be executed after the build task
+   and will create a zip file with the contents of
+   the build\libs directory (the jar program). 
+   
+   The zip file will be saved in the 
+   build\distributions folder, and will be named
+   distPackage-1.0.zip                              */
+task packageDistribution(type: Zip){
+    from 'build\\libs'
+    baseName = 'distPackage'
+    version = '1.0'
+}

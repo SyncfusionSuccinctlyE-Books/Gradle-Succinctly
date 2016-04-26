@@ -1,0 +1,9 @@
+task copyFiles(type: Copy){
+    from 'source'
+    into 'target'
+    include '**/*.txt'
+}
+
+task backupFiles(dependsOn: copyFiles) << {
+    println 'Backup completed'
+}

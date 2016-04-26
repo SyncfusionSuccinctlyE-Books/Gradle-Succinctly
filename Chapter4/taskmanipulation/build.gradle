@@ -1,0 +1,6 @@
+5.times { index ->
+     task "task$index" << {
+         println "I'm the task number $index"
+     }
+}
+task0.dependsOn task2, task3

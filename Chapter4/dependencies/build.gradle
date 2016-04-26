@@ -1,0 +1,11 @@
+task firstTask << {
+  println 'First Task.'
+}
+
+task secondTask(dependsOn: 'firstTask') << {
+  println 'Second Task.'
+}
+
+task thirdTask(dependsOn: 'secondTask') << {
+    println 'Third task.'
+}

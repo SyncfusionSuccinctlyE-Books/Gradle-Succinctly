@@ -1,0 +1,15 @@
+task setUpConnection {
+  println 'Setting up database connection'
+}
+
+//An explicit call on the task object
+task connectToDatabase
+connectToDatabase.dependsOn setUpConnection
+
+//Declares dependency using the task name with no quotes
+task extractDatabase {
+ dependsOn connectToDatabase
+}
+
+//A shortcut for declaring dependencies (discussed in Chapter 4)
+task closeConnection(dependsOn: extractDatabase)

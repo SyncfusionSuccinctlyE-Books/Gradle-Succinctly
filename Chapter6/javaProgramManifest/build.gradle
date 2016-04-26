@@ -1,0 +1,13 @@
+apply plugin: 'java'
+
+jar {
+    manifest {
+        attributes 'Specification-Title'    : 'Gradle Succinctly'
+        attributes 'Specification-Version'  : '1.0'
+        attributes 'Specification-Vendor'   : 'Syncfusion, Inc.'
+        attributes 'Implementation-Title'   : 'hello.HelloWorld'
+        attributes 'Implementation-Version' : 'build02'
+        attributes 'Implementation-Vendor'  : 'Syncfusion, Inc.'
+        attributes 'Main-Class': 'hello.HelloWorld'
+    }
+}

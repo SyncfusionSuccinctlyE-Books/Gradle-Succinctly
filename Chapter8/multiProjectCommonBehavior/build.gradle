@@ -1,0 +1,4 @@
+Closure cl = { task -> println "I'm $task.project.name" }
+ allprojects {
+    task hello << cl
+}

@@ -1,0 +1,9 @@
+Closure cl = {task -> println "I am the task $task.name of project $task.project.name"}
+
+allprojects.each {
+    
+    project("$it.path") {
+        task hello << cl
+    }
+    
+}

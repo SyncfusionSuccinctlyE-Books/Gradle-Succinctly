@@ -1,0 +1,20 @@
+/* Four closures are defined */
+Closure clbr = {task -> println "I am the task $task.name of project $task.project.name. I'm in charge of Business Rules."}
+Closure cldm = {task -> println "I am the task $task.name of project $task.project.name. I'm in charge of Database Model."}
+Closure clwf = {task -> println "I am the task $task.name of project $task.project.name. I'm in charge of Web Front End displaying."}
+Closure clroot = {task -> println "I am the task $task.name of project $task.project.name. I'm the entry point for all process."}
+
+/* Depending on the project's path, a different closure is assigned to the task hello 
+   This produces a specific behavior for the same task, depending on which project is 
+   executed.                                                                          */
+allprojects.each {
+    
+    project("$it.path") {
+        switch (it.path) {
+            case ":businessRules" : task hello << clbr ; break;
+            case ":databaseModel" : task hello << cldm ; break;
+            case ":webfrontend" : task hello << clwf ; break ;
+            default: task hello << clroot;
+        }
+    }
+}

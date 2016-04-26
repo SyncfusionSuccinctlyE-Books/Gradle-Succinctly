@@ -1,0 +1,5 @@
+ext.software = true
+
+hello.doLast {
+    println " - and I'm in charge of Web Responsive User Interface."
+}

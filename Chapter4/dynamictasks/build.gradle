@@ -1,0 +1,5 @@
+9.times { index ->
+     task "task$index" << {
+         println "I'm the task number $index"
+     }
+}

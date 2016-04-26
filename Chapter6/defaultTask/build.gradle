@@ -1,0 +1,10 @@
+defaultTasks 'DisplayTasks'
+
+task emptyTask << {
+}
+
+task DisplayTasks << {
+   tasks.each {
+       println "Task name is ${it.name}"
+   }
+}

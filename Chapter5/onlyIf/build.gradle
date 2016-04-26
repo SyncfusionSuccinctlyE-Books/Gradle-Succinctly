@@ -1,0 +1,44 @@
+/* This is the task that receives the predicate */
+task extractMetadata << {
+        println 'Extacting metadata.'
+}
+
+/* The predicate is assigned to extractMetadata */
+/* The task will be executed if the property extract.metadata is equal to true */
+extractMetadata.onlyIf {
+    System.properties['extract.metadata'] == 'true'
+}
+
+task extractData << {
+    println 'Extracting database data.'
+}
+
+/* This is the main task */
+task extractDatabase << {  
+    //This is the task action 
+}
+
+/* Code that will be executed after extractDatabase action ends */
+extractDatabase << {
+    println 'Zipping extracted data to backupdata.zip'
+}
+
+extractDatabase << {
+   println 'Closing database connection.'
+}
+
+/* extractDatabase will depend on extractData and extractMetadata */
+/* extractData is executed first, then extractMetadata will be executed depending on the predicate */
+extractDatabase {
+    dependsOn extractData, extractMetadata
+}
+
+/* Code that will be executed before extractData task action begins, is set up at configuration phase. */
+extractData {
+    doFirst {
+    println 'Connecting to the database.'
+    }
+    doFirst {
+        println 'Setting up database connection.'
+    }
+}

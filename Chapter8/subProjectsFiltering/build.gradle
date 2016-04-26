@@ -1,0 +1,13 @@
+allprojects {
+    task hello << {task -> println "I'm $task.project.name"}
+}
+
+subprojects.each {
+   project("$it.path").hello << {
+        println " - and I depend on subProjectsFiltering"
+    }
+}
+
+configure(subprojects.findAll {it.name != 'zipPackage'}) {
+    hello << {println " - and I'm part of the application."}
+}

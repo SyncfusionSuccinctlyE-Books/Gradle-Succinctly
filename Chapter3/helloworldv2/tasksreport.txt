@@ -1,0 +1,27 @@
+
+------------------------------------------------------------
+All tasks runnable from root project
+------------------------------------------------------------
+
+Build Setup tasks
+-----------------
+init - Initializes a new Gradle build. [incubating]
+wrapper - Generates Gradle wrapper files. [incubating]
+
+Help tasks
+----------
+buildEnvironment - Displays all buildscript dependencies declared in root project 'helloworldv2'.
+components - Displays the components produced by root project 'helloworldv2'. [incubating]
+dependencies - Displays all dependencies declared in root project 'helloworldv2'.
+dependencyInsight - Displays the insight into a specific dependency in root project 'helloworldv2'.
+help - Displays a help message.
+model - Displays the configuration model of root project 'helloworldv2'. [incubating]
+projects - Displays the sub-projects of root project 'helloworldv2'.
+properties - Displays the properties of root project 'helloworldv2'.
+tasks - Displays the tasks runnable from root project 'helloworldv2'.
+
+Other tasks
+-----------
+helloTask
+world
+    hello

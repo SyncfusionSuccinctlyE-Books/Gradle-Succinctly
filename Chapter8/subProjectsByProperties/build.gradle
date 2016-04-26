@@ -1,0 +1,12 @@
+allprojects {
+    task hello << {task -> println "I'm $task.project.name"}
+}
+
+subprojects {
+   hello {
+           doLast {println " - and I depend on $rootProject.name"}
+         }
+   afterEvaluate {Project project ->
+         if (project.software) { hello.doLast {println " - and I'm part of the application."} }   
+   }
+}

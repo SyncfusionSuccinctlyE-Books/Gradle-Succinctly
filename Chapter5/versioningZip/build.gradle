@@ -1,0 +1,10 @@
+/* To execute this build several times, first delete
+   both .gradle folder and the zip file */
+
+task versionedZip(type: Zip){
+    from 'source'
+    baseName = 'backupSet'
+    version = System.properties['zip.version']
+}
+
+println "The ${versionedZip.archiveName} has been created"

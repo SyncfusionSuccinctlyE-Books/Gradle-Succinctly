@@ -1,0 +1,14 @@
+/* Applying the Java plugin for this Gradle build */
+apply plugin: 'java'
+
+/* Making emailMe task to depend on Java compilation. 
+ The task compileJava will return true for didWork 
+ property if at least one file was successfully
+ compiled */
+task emailMe(dependsOn: compileJava) << {
+    if (tasks.compileJava.didWork) {
+        println 'Send Email announcing success'
+    }
+    
+}
+

@@ -1,0 +1,9 @@
+task nameandaction
+
+nameandaction << {
+   println 'An action was assigned to this task'
+}
+
+nameandaction << {
+   println 'A second action was assigned to this task'
+}

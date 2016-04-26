@@ -1,0 +1,49 @@
+/* A list of default tasks is supplied. Each task will be executed
+   in order, starting from the left
+*/
+defaultTasks 'SetEnvironment','extractDatabase','ResetEnvironment'
+
+task SetEnvironment << {
+    println 'Setting operating system environment'
+}
+
+task extractMetadata << {
+        println 'Extacting metadata.'
+}
+
+task extractData << {
+    println 'Extracting database data.'
+}
+
+task extractDatabase << {  
+ 
+}
+
+task ResetEnvironment << {
+    println 'Resetting operating system environment'
+}
+
+/* Code that will be executed after extractDatabase action ends */
+extractDatabase << {
+    println 'Zipping extracted data to backupdata.zip'
+}
+
+extractDatabase << {
+   println 'Closing database connection.'
+}
+
+/* extractDatabase will depend on extractData and extractMetadata       */
+/* extractData is executed first, then extractMetadata will be executed */
+extractDatabase {
+    dependsOn extractData, extractMetadata
+}
+
+/* Code that will be executed before extractData task action begins, is set up at configuration phase. */
+extractData {
+    doFirst {
+    println 'Connecting to the database.'
+    }
+    doFirst {
+        println 'Setting up database connection.'
+    }
+}

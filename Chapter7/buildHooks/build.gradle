@@ -1,0 +1,92 @@
+/* Declaring default tasks will ensure the zip packaging after the build */
+defaultTasks 'packageDistribution'
+
+/* Execute gradle with no tasks, in order to succeed */
+
+apply plugin: 'java'
+
+/* Adding the needed attributes to the manifest file */
+jar {
+    manifest {
+        attributes 'Specification-Title'    : 'Gradle Succinctly'
+        attributes 'Specification-Version'  : '1.0'
+        attributes 'Specification-Vendor'   : 'Syncfusion, Inc.'
+        attributes 'Implementation-Title'   : 'hello.HelloWorld'
+        attributes 'Implementation-Version' : 'build02'
+        attributes 'Implementation-Vendor'  : 'Syncfusion, Inc.'
+        attributes 'Main-Class': 'hello.HelloWorld'
+    }
+}
+
+/* This task will be executed after the build task
+   and will create a zip file with the contents of
+   the build\libs directory (the jar program). 
+   
+   The zip file will be saved in the 
+   build\distributions folder, and will be named
+   distPackage-1.0.zip                              */
+task packageDistribution(type: Zip){
+    from 'build\\libs'
+    baseName = 'distPackage'
+    version = '1.0'
+}
+
+packageDistribution {
+    dependsOn 'build'
+}
+
+/* In this case, and for testing purposes only, a directory
+   named backuprepo is searched within the project's
+   tree structure. If such directory doesn't exist, a message
+   is displayed.                                              */   
+afterEvaluate {
+    if (!file('backuprepo').isDirectory())
+    {
+        println "There is no directory for backing up source files of project ${project.name}"
+    }
+}
+
+/* Every time a task is added its name is displayed */
+tasks.whenTaskAdded { task ->
+    println "The task '${task.name}' was added to the execution plan"
+}
+
+/* The result of the evaluation for a project can be
+   trapped with this code.                           */
+gradle.afterProject {project, projectState -> 
+   if (projectState.failure) {
+        println "Evaluation of $project FAILED"
+   }
+   else
+   {
+       println "Evaluation of $project succeeded"
+   }
+  }
+
+/* Every task name is displayed before task's execution begins */
+gradle.taskGraph.beforeTask {Task task ->
+      println "Executing $task"
+  }
+
+/* The state for every task is displayed just after its execution */
+gradle.taskGraph.afterTask {Task task, TaskState state ->
+      if (state.failure) {
+          println 'Task FAILED'
+      }
+      else
+      {
+          println 'Task DONE'
+      }
+} 
+
+/* If the build fails, the reason why it fails is displayed */
+gradle.buildFinished {buildResult ->
+    if (buildResult.failure != null)
+    {
+        println "Build has failed - ${buildResult.failure}"
+    }
+    else
+    {
+        println "BUILD SUCCESFUL AGAIN"
+    }
+}
