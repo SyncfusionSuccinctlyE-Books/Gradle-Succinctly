@@ -7,8 +7,8 @@ This is the companion repo for [*Gradle Succinctly*](https://www.syncfusion.com/
 * Install Gradle as explained in the e-book.
 * Download the content of the repository in any desired folder.
 * Open a Command Prompt window (Windows platform).
-* Change to the desired chapter folder and then into the project folder.
-* Issue Gradle commands accoding to the e-book.
+* Change to the desired chapter folder and then the project folder.
+* Issue Gradle commands according to the e-book.
 
 [![cover](https://github.com/SyncfusionSuccinctlyE-Books/Gradle-Succinctly/blob/master/cover.png)](https://www.syncfusion.com/ebooks/gradle_succinctly)
 
