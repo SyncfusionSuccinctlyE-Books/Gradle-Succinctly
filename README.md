@@ -10,7 +10,7 @@ This is the companion repo for [*Gradle Succinctly*](https://www.syncfusion.com/
 * Change to the desired chapter folder and then into the project folder.
 * Issue Gradle commands accoding to the e-book.
 
-[![cover](https://github.com/SyncfusionSuccinctlyE-Books/Gradle-Succinctly/cover.png)](https://www.syncfusion.com/ebooks/gradle_succinctly)
+[![cover](https://github.com/SyncfusionSuccinctlyE-Books/Gradle-Succinctly/blob/master/cover.png)](https://www.syncfusion.com/ebooks/gradle_succinctly)
 
 ## Looking for more _Succinctly_ titles?
 
